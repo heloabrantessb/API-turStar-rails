@@ -9,13 +9,13 @@ RUN apt-get update -qq && apt-get install -y \
 
 RUN gem install bundler
 
-WORKDIR ./src
+WORKDIR /src
 
-COPY ./src/Gemfile ./
+COPY src/Gemfile src/Gemfile.lock ./
 
 RUN bundle install
 
-COPY . .
+COPY src/ .
 
 EXPOSE 3000
 
