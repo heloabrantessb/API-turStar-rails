@@ -3,5 +3,5 @@ class Reservation < ApplicationRecord
   belongs_to :package
 
   validates :reservation_date, presence: true
-  validates :status, presence: true, inclusion: { in: ['pending', 'confirmed', 'canceled'] }
+  validates :status, presence: true
 end

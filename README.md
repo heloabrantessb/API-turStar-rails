@@ -1,3 +1,4 @@
+
 # TurStar API - Sistema de agência de Viagens
 
 Este projeto é uma API desenvolvida em Ruby On Rails para realizar o gerenciamento de um sistema de agência de viagens. A aplicação fornece endpoints de gerenciamento de usuários, destinos, categorias, reservas e entre outros recursos. 
