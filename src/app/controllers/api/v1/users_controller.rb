@@ -11,7 +11,8 @@ class Api::V1::UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @users
+    authorize @user
+    render json: @user
   end
 
   # POST /users
@@ -36,7 +37,10 @@ class Api::V1::UsersController < ApplicationController
 
   # DELETE /api/v1/users/1
   def destroy
+    authorize @user
     @user.destroy!
+
+    render json: {message: "User deleted successfully."}, status: :ok
   end
 
   private
@@ -47,6 +51,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :name, :username, :email, :password_digest, :role_id ])
+      params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :role_id )
     end
 end

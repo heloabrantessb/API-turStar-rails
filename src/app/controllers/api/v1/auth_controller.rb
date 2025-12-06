@@ -1,5 +1,6 @@
 class Api::V1::AuthController < ApplicationController
     allow_unauthenticated_access only: [:login]
+
     def login
       @current_user = User.find_by(email: params[:email])
       if @current_user && @current_user.authenticate(params[:password])
@@ -8,5 +9,9 @@ class Api::V1::AuthController < ApplicationController
       else
         render json: { error: "Invalid email or password" }, status: :unauthorized
       end
+    end
+
+    def logout
+      render json: { message: "Logged out successfully" }, status: :ok
     end
 end

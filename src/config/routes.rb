@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :roles
       resources :destinations
       post "auth/login", to: "auth#login"
+      delete "auth/logout", to: "auth#logout"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -15,10 +15,11 @@ class Api::V1::CategoriesController < ApplicationController
 
   # POST /categories
   def create
+    authorize @category
     @category = Category.new(category_params)
 
     if @category.save
-      render json: @category, status: :created, location: @category
+      render json: @category, status: :created
     else
       render json: @category.errors, status: :unprocessable_content
     end
@@ -26,6 +27,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1
   def update
+    authorize @category
     if @category.update(category_params)
       render json: @category
     else
@@ -35,6 +37,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   # DELETE /categories/1
   def destroy
+    authorize @category
     @category.destroy!
   end
 
