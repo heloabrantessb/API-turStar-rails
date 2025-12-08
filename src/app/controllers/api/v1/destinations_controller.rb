@@ -3,13 +3,16 @@ class Api::V1::DestinationsController < ApplicationController
 
   # GET /destinations
   def index
-    @destinations = Destination.all
+
+    @destinations = policy_scope(Destination)
+    authorize @destinations
 
     render json: @destinations
   end
 
   # GET /destinations/1
   def show
+    authorize @destination
     render json: @destination
   end
 
@@ -18,7 +21,7 @@ class Api::V1::DestinationsController < ApplicationController
     @destination = Destination.new(destination_params)
 
     if @destination.save
-      render json: @destination, status: :created, location: @destination
+      render json: @destination, status: :created 
     else
       render json: @destination.errors, status: :unprocessable_content
     end

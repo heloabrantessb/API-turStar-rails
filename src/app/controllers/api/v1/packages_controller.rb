@@ -1,4 +1,4 @@
-class Api::V1::PackagesController < ApplicationController
+  class Api::V1::PackagesController < ApplicationController
   before_action :set_package, only: %i[ show update destroy ]
 
   # GET /packages
@@ -18,7 +18,7 @@ class Api::V1::PackagesController < ApplicationController
     @package = Package.new(package_params)
 
     if @package.save
-      render json: @package, status: :created, location: @package
+      render json: @package, status: :created
     else
       render json: @package.errors, status: :unprocessable_content
     end
@@ -46,6 +46,6 @@ class Api::V1::PackagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def package_params
-      params.expect(package: [ :title, :total_price ])
+      params.require(:package).permit(:title, :total_price, destination_ids: [])
     end
 end

@@ -21,6 +21,7 @@ class Api::V1::UsersController < ApplicationController
 
     if @user.save
       render json: @user, status: :created
+      UserMailer.welcome_email(@user).deliver_later
     else
       render json: @user.errors, status: :unprocessable_content
     end
