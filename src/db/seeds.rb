@@ -17,16 +17,16 @@ manager_role = Role.find_or_create_by!(title: "Manager")
 end
 
 User.find_or_create_by!(name: "Administrador", username: "admin", email: "admin@email.com", role: admin_role) do |user|
-  user.password_digest = "admin123"
+  user.password = "admin123"
 end             
 
 
 User.find_or_create_by!(name: "Frederico Batista", username: "frederico.batista", email: "frederico.batista@email.com", role: customer_role) do |user|
-  user.password_digest = "frederico123"
+  user.password = "frederico123"
 end
 
 User.find_or_create_by!(name: "Diego Ferreira", username: "di.ferreira", email: "di.ferreira@email.com", role: manager_role) do |user|
-  user.password_digest = "diego123"
+  user.password = "diego123"
 end
 
 ["Beach", "Mountain", "City", "Ecological", "Historical"].each do |category|
