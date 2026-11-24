@@ -12,6 +12,8 @@ class Api::V1::AuthController < ApplicationController
     end
 
     def logout
+      payload = decode.first
+      JwtDenylist.revoke!(jti: payload["jti"], exp: payload["exp"])
       render json: { message: "Logged out successfully" }, status: :ok
     end
 end

@@ -54,9 +54,15 @@ private
    @current_user ||= User.find(user_id)
   end
 
+  def token_revoked?
+    JwtDenylist.revoked?(decode.first["jti"])
+  end
+
   def authenticate
     begin
-      if current_user
+      if token_revoked?
+        render json: { error: "Token has been revoked" }, status: :unauthorized
+      elsif current_user
         current_user
       else
         render json: { error: "Unauthorized" }, status: :unauthorized
