@@ -6,7 +6,7 @@ Instruções para o Claude Code ao trabalhar neste repositório.
 
 **TurStar API**: API REST em Ruby on Rails (modo `api_only`) para uma agência de viagens.
 
-- Ruby 3.2.9, Rails 8.0.4 e PostgreSQL 15. A atualização de versões está na issue #53.
+- Ruby 3.4.13, Rails 8.1.4 e PostgreSQL 15.
 - Autenticação com JWT (`app/controllers/concerns/Authentication.rb`) e autorização com Pundit (`app/policies/`).
 - O app Rails fica em `src/`. O `Dockerfile` e o `docker-compose.yml` ficam na raiz.
 - Rotas versionadas em `/api/v1/*` (`src/config/routes.rb`).

@@ -4,8 +4,8 @@
 Este projeto é uma API desenvolvida em Ruby On Rails para realizar o gerenciamento de um sistema de agência de viagens. A aplicação fornece endpoints de gerenciamento de usuários, destinos, categorias, reservas e entre outros recursos. 
 
 ## Tecnologias utilizadas
-- Ruby (**v3.2.9**)
-- Rails (**v8.0.4**)
+- Ruby (**v3.4.13**)
+- Rails (**v8.1.4**)
 - PostgreSQL
 - Docker e Docker Compose
 - Postman Collection (**Documentação**)
